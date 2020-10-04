@@ -81,7 +81,7 @@ const CreateSlot = (props) => {
   return (
     <div>
       <Button variant="primary" onClick={handleClick}>
-        + Create Slot
+        + Add Slot
       </Button>
       <Modal show={openModal} onHide={handleClick}>
         <Modal.Header closeButton>

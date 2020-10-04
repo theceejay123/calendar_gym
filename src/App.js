@@ -55,8 +55,10 @@ const App = () => {
     <div>
       <Calendar onChange={handleChange} value={date} minDate={new Date()} />
       <div className="dateContent">
-        <h2>Scheduler</h2>
-        <CreateSlot date={date} handleChange={handleChange} />
+        <div className="dateContent__header">
+          <h2 className="dateContent__title">Scheduler</h2>
+          <CreateSlot date={date} handleChange={handleChange} />
+        </div>
         <ListSlot
           date={date}
           slots={slots}

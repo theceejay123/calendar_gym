@@ -10,11 +10,42 @@
   }
 }
 
+body {
+  font-family: 'Josefin Sans', sans-serif;
+  padding: .5em;
+  margin: 0;
+}
+
+.dateContent {
+  min-width: 320px;
+  max-width: 767px;
+  margin: auto;
+}
+
+.dateContent__header {
+  display: flex;
+  justify-content: space-between;
+  padding: .7em .5em .7em .5em;
+}
+
+.dateContent__title {
+  font-size: xx-large;
+  margin: auto;
+  margin-left: 0;
+}
+
+
+/* 
+ ============================================
+ Default for Calendar - DO NOT DELETE UNLESS
+ KNOW WHAT YOU ARE GETTING INTO
+ ============================================
+*/
+
 .react-calendar {
   max-width: 100%;
   background: white;
   border: 1px solid #a0a096;
-  font-family: Arial, Helvetica, sans-serif;
   line-height: 1.125em;
   margin: auto;
   width: 550px;
