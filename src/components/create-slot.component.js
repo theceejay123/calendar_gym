@@ -44,7 +44,7 @@ const CreateSlot = (props) => {
   const handleSubmit = () => {
     console.log(timeSlot);
     Axios.post(
-      "http://backend.onpaper.ca:1337/slots/add",
+      "https://backend.onpaper.ca:1337/slots/add",
       JSON.stringify({
         name: name,
         description: description,
@@ -67,7 +67,7 @@ const CreateSlot = (props) => {
   };
 
   const getSlots = async () => {
-    fetch("http://backend.onpaper.ca:1337/slots")
+    fetch("https://backend.onpaper.ca:1337/slots")
       .then((res) => {
         if (res.status === 200) {
           return res.json();

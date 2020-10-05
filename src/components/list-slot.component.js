@@ -7,7 +7,7 @@ const ListSlot = (props) => {
   const handleDelete = (e) => {
     console.log(e.target.value);
     Axios.delete(
-      `http://backend.onpaper.ca:1337/slots/${e.target.value}`
+      `https://backend.onpaper.ca:1337/slots/${e.target.value}`
     ).then((res) => console.log(res.data));
     props.handleChange(
       props.date,
