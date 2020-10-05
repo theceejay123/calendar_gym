@@ -16,7 +16,7 @@ const App = () => {
   useEffect(() => {
     console.log("triggered");
     const getData = async () => {
-      fetch("https://backend.onpaper.ca:1337/slots")
+      fetch("https://backend.onpaper.ca/slots")
         .then((res) => {
           if (res.status === 200) {
             return res.json();
