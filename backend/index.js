@@ -8,6 +8,8 @@ require("dotenv").config();
 const app = express();
 const port = process.env.PORT || 5000;
 
+app.options('*', cors())
+
 app.use(cors());
 app.use(helmet());
 app.use(express.json());
@@ -28,6 +30,12 @@ connection.once("open", () => {
 
 const slotsRouter = require("./routes/slots");
 const usersRouter = require("./routes/users");
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 app.use("/slots", slotsRouter);
 app.use("/users", usersRouter);
