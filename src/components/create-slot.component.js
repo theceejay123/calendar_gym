@@ -42,9 +42,8 @@ const CreateSlot = (props) => {
   };
 
   const handleSubmit = () => {
-    console.log(timeSlot);
     Axios.post(
-      "https://backend.onpaper.ca/slots/add",
+      "http://localhost:5000/slots/add",
       JSON.stringify({
         name: name,
         description: description,
@@ -67,11 +66,9 @@ const CreateSlot = (props) => {
   };
 
   const getSlots = async () => {
-    fetch("https://backend.onpaper.ca/slots")
+    Axios.get("http://localhost:5000/slots")
       .then((res) => {
-        if (res.status === 200) {
-          return res.json();
-        }
+        return res.data;
       })
       .then((data) => {
         props.handleChange(props.date, data);

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
+import Axios from "axios";
 
 // Component
 import CreateSlot from "./components/create-slot.component";
@@ -16,11 +17,9 @@ const App = () => {
   useEffect(() => {
     console.log("triggered");
     const getData = async () => {
-      fetch("https://backend.onpaper.ca/slots")
+      Axios.get("http://localhost:5000/slots")
         .then((res) => {
-          if (res.status === 200) {
-            return res.json();
-          }
+          return res.data;
         })
         .then((data) => {
           setSlots(data);
@@ -39,7 +38,6 @@ const App = () => {
   }, []);
 
   const handleChange = (date, data = slots) => {
-    console.log(date.toLocaleDateString());
     setSlots(data);
     setFilteredSlots(
       data.filter(
