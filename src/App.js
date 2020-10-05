@@ -17,7 +17,12 @@ const App = () => {
   useEffect(() => {
     console.log("triggered");
     const getData = async () => {
-      Axios.get("http://localhost:5000/slots")
+      Axios.get("https://backend.onpaper.ca/slots", {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json",
+        },
+      })
         .then((res) => {
           return res.data;
         })

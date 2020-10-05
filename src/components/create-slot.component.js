@@ -43,7 +43,7 @@ const CreateSlot = (props) => {
 
   const handleSubmit = () => {
     Axios.post(
-      "http://localhost:5000/slots/add",
+      "https://backend.onpaper.ca/slots/add",
       JSON.stringify({
         name: name,
         description: description,
@@ -66,7 +66,12 @@ const CreateSlot = (props) => {
   };
 
   const getSlots = async () => {
-    Axios.get("http://localhost:5000/slots")
+    Axios.get("https://backend.onpaper.ca/slots", {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json",
+      },
+    })
       .then((res) => {
         return res.data;
       })

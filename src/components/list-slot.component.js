@@ -5,9 +5,9 @@ import Axios from "axios";
 
 const ListSlot = (props) => {
   const handleDelete = (e) => {
-    Axios.delete(`http://localhost:5000/slots/${e.target.value}`).then((res) =>
-      console.log(res.data)
-    );
+    Axios.delete(
+      `https://backend.onpaper.ca/slots/${e.target.value}`
+    ).then((res) => console.log(res.data));
     props.handleChange(
       props.date,
       props.slots.filter((slot) => slot._id !== e.target.value)
