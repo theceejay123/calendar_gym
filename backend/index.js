@@ -13,17 +13,9 @@ app.use(express.json());
 app.use(
   cors({
     origin: "*",
-    allowedHeaders: [
-      "Accept-Version",
-      "Authorization",
-      "Credentials",
-      "Content-Type",
-    ],
+    cors: true,
   })
 );
-app.options("*", cors());
-
-app.disable("x-powered-by");
 
 const uri = process.env.ATLAS_URI;
 // Connection to mongodb database
@@ -39,20 +31,6 @@ connection.once("open", () => {
 
 const slotsRouter = require("./routes/slots");
 const usersRouter = require("./routes/users");
-
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  // Request methods you wish to allow
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
-  );
-  next();
-});
 
 app.use("/slots", slotsRouter);
 app.use("/users", usersRouter);
