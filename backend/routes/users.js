@@ -7,15 +7,17 @@ router.route("/").get((req, res) => {
     .catch((err) => res.status(400).json(`Error: ${err}`));
 });
 
-router.route("/add").post((req, res) => {
-  const name = req.body.name;
+router.route("/add").post(async (req, res) => {
+  const newUser = new User(req.body);
 
-  const newUser = new User({ name });
-
-  newUser
-    .save()
-    .then(() => res.json(`Added User: ${name}`))
-    .catch((err) => res.status(400).json(`Error: ${err}`));
+  try {
+    await newUser.save();
+    res.status(201).send({ newUser });
+  } catch (e) {
+    res.status(400).send(e);
+  }
 });
+
+router.route("/login").post();
 
 module.exports = router;
